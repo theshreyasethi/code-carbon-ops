@@ -232,7 +232,4 @@ Curated CSV exports of these tables are provided in the `dataset/` directory for
 
 ## 8. License & Citation
 
-This software is released under the **MIT License**. See the `LICENSE` file for details.
-
-If you utilize CodeCarbonOps in academic research or software systems, please reference this repository and permanent archive:
-> Vaibhav et al. (2026). *CodeCarbonOps: Open-Source Software for Closed-Loop Carbon-Aware AI Inference Routing*. GitHub Repository: https://github.com/vaibhav585/CodeCarbonOps. Zenodo Archive [DOI: pending].
+This software is released under the **MIT License**. 
