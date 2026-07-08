@@ -1,0 +1,106 @@
+{
+    "description": "Available GPU servers for LLM inference routing",
+    "last_updated": "2026-01-16",
+    "servers": [
+        {
+            "id": "aws-eu-north-1",
+            "name": "AWS Stockholm",
+            "region": "eu-north-1",
+            "provider": "AWS",
+            "gpu_type": "A100",
+            "cost_per_hour": 3.50,
+            "latency_ms": 180,
+            "is_active": true
+        },
+        {
+            "id": "aws-us-west-2",
+            "name": "AWS Oregon",
+            "region": "us-west-2",
+            "provider": "AWS",
+            "gpu_type": "A100",
+            "cost_per_hour": 3.20,
+            "latency_ms": 120,
+            "is_active": true
+        },
+        {
+            "id": "aws-us-east-1",
+            "name": "AWS Virginia",
+            "region": "us-east-1",
+            "provider": "AWS",
+            "gpu_type": "A100",
+            "cost_per_hour": 3.00,
+            "latency_ms": 80,
+            "is_active": true
+        },
+        {
+            "id": "azure-uk-south",
+            "name": "Azure UK South",
+            "region": "uk-south",
+            "provider": "Azure",
+            "gpu_type": "A100",
+            "cost_per_hour": 3.40,
+            "latency_ms": 150,
+            "is_active": true
+        },
+        {
+            "id": "gcp-europe-west4",
+            "name": "GCP Netherlands",
+            "region": "eu-west-1",
+            "provider": "GCP",
+            "gpu_type": "A100",
+            "cost_per_hour": 3.30,
+            "latency_ms": 160,
+            "is_active": true
+        },
+        {
+            "id": "aws-sa-east-1",
+            "name": "AWS São Paulo",
+            "region": "sa-east-1",
+            "provider": "AWS",
+            "gpu_type": "A10G",
+            "cost_per_hour": 2.80,
+            "latency_ms": 250,
+            "is_active": true
+        },
+        {
+            "id": "aws-ca-central-1",
+            "name": "AWS Canada",
+            "region": "ca-central-1",
+            "provider": "AWS",
+            "gpu_type": "A100",
+            "cost_per_hour": 3.10,
+            "latency_ms": 100,
+            "is_active": true
+        },
+        {
+            "id": "aws-ap-south-1",
+            "name": "AWS Mumbai",
+            "region": "ap-south-1",
+            "provider": "AWS",
+            "gpu_type": "A100",
+            "cost_per_hour": 2.50,
+            "latency_ms": 50,
+            "is_active": true
+        },
+        {
+            "id": "aws-ap-northeast-1",
+            "name": "AWS Tokyo",
+            "region": "ap-northeast-1",
+            "provider": "AWS",
+            "gpu_type": "A100",
+            "cost_per_hour": 3.60,
+            "latency_ms": 200,
+            "is_active": true
+        },
+        {
+            "id": "azure-australia-east",
+            "name": "Azure Sydney",
+            "region": "australia-east",
+            "provider": "Azure",
+            "gpu_type": "A100",
+            "cost_per_hour": 3.80,
+            "latency_ms": 280,
+            "is_active": true
+        }
+    ]
+}

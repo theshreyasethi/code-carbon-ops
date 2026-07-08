@@ -1,0 +1,40 @@
+id,repo,branch,pr_number,job_type,files_changed,lines_added,lines_removed,predicted_energy_kwh,predicted_carbon_g,recommended_server,carbon_budget_g,enforcement_action,created_at
+8,user/ml-pipeline,feature-57,25,test,25,108,65,0.023365,7.3726,server-eu-central-1,20.0,ALLOW,2026-03-10 10:28:53.837747
+9,user/web-frontend,feature-79,136,deploy,7,304,5,0.015045,9.9491,server-ap-south-1,40.0,ALLOW,2026-03-11 10:28:53.837747
+23,user/ml-pipeline,feature-8,20,test,10,303,64,0.016835,5.3121,server-eu-central-1,20.0,ALLOW,2026-03-13 23:28:53.837747
+17,user/ml-pipeline,feature-16,91,build,21,108,36,0.02122,7.6587,server-us-east-1,30.0,ALLOW,2026-03-14 06:28:53.837747
+1,user/codecarbonops,feature-22,133,build_and_test,4,383,152,0.014675,0.3828,server-eu-north-1,50.0,ALLOW,2026-03-14 18:28:53.837747
+6,user/web-frontend,feature-5,68,build_and_test,14,267,105,0.01886,0.4919,server-eu-north-1,50.0,ALLOW,2026-03-14 21:28:53.837747
+4,user/codecarbonops,feature-65,10,deploy,19,77,14,0.019955,13.1961,server-ap-south-1,40.0,ALLOW,2026-03-16 11:28:53.837747
+20,user/ml-pipeline,feature-12,10,lint,10,312,204,0.01758,0.7486,server-ca-central-1,10.0,ALLOW,2026-03-17 21:28:53.837747
+30,user/web-frontend,feature-6,200,lint,12,231,131,0.01781,0.7584,server-ca-central-1,10.0,ALLOW,2026-03-17 23:28:53.837747
+13,user/codecarbonops,feature-1,37,test,19,149,53,0.02051,6.4718,server-eu-central-1,20.0,ALLOW,2026-03-18 16:28:53.837747
+5,user/ml-pipeline,feature-17,93,lint,8,60,18,0.01439,0.6128,server-ca-central-1,10.0,ALLOW,2026-03-19 09:28:53.837747
+25,user/codecarbonops,feature-70,65,lint,3,327,117,0.01372,0.5842,server-ca-central-1,10.0,ALLOW,2026-03-21 00:28:53.837747
+3,user/web-frontend,feature-17,86,test,21,236,97,0.022165,6.994,server-eu-central-1,20.0,ALLOW,2026-03-21 09:28:53.837747
+16,user/codecarbonops,feature-69,131,build_and_test,9,363,75,0.01669,0.4353,server-eu-north-1,50.0,ALLOW,2026-03-25 18:28:53.837747
+21,user/web-frontend,feature-99,175,build_and_test,24,242,69,0.023555,0.6144,server-eu-north-1,50.0,ALLOW,2026-03-25 21:28:53.837747
+11,user/ml-pipeline,feature-75,54,build_and_test,17,338,106,0.02072,0.5404,server-eu-north-1,50.0,ALLOW,2026-03-26 06:28:53.837747
+15,user/web-frontend,feature-7,108,lint,18,108,32,0.0197,0.8389,server-ca-central-1,10.0,ALLOW,2026-03-27 01:28:53.837747
+27,user/web-frontend,feature-82,104,build,23,311,51,0.02331,8.413,server-us-east-1,30.0,ALLOW,2026-03-28 00:28:53.837747
+22,user/codecarbonops,feature-3,13,build,16,222,24,0.01923,6.9404,server-us-east-1,30.0,ALLOW,2026-03-28 17:28:53.837747
+24,user/web-frontend,feature-20,31,deploy,21,65,37,0.02101,13.8937,server-ap-south-1,40.0,ALLOW,2026-03-29 11:28:53.837747
+14,user/ml-pipeline,feature-45,106,deploy,11,101,56,0.016285,10.7691,server-ap-south-1,40.0,ALLOW,2026-03-29 12:28:53.837747
+10,user/codecarbonops,feature-77,160,lint,6,291,166,0.015285,0.6509,server-ca-central-1,10.0,ALLOW,2026-03-29 16:28:53.837747
+18,user/web-frontend,feature-73,170,test,20,255,44,0.021495,6.7826,server-eu-central-1,20.0,ALLOW,2026-03-31 17:28:53.837747
+29,user/ml-pipeline,feature-39,185,deploy,13,77,17,0.01697,11.2221,server-ap-south-1,40.0,ALLOW,2026-04-01 23:28:53.837747
+19,user/codecarbonops,feature-9,182,deploy,18,357,175,0.02166,14.3236,server-ap-south-1,40.0,ALLOW,2026-04-02 01:28:53.837747
+26,user/ml-pipeline,feature-76,183,build_and_test,3,273,60,0.013165,0.3434,server-eu-north-1,50.0,ALLOW,2026-04-02 18:28:53.837747
+28,user/codecarbonops,feature-21,185,test,11,350,236,0.01843,5.8154,server-eu-central-1,20.0,ALLOW,2026-04-05 06:28:53.837747
+2,user/ml-pipeline,feature-8,32,build,18,74,5,0.019395,7.0,server-us-east-1,30.0,ALLOW,2026-04-07 22:28:53.837747
+34,my-org/core,main,,build_and_test,5,50,10,0.012,0.25,AWS Canada,50.0,ALLOW,2026-04-08 19:35:35.215343
+35,my-org/core,main,,build_and_test,6,60,10,0.013000000000000001,0.27,AWS Canada,50.0,ALLOW,2026-04-08 20:35:35.215343
+36,my-org/core,main,,build_and_test,7,70,10,0.014,0.29,AWS Canada,50.0,ALLOW,2026-04-08 21:35:35.215343
+37,my-org/core,main,,build_and_test,8,80,10,0.015,0.31,AWS Canada,50.0,ALLOW,2026-04-08 22:35:35.215343
+38,my-org/core,main,,build_and_test,9,90,10,0.016,0.33,AWS Canada,50.0,ALLOW,2026-04-08 23:35:35.215343
+12,user/web-frontend,feature-73,150,build,19,254,176,0.02165,7.8138,server-us-east-1,30.0,ALLOW,2026-04-09 06:28:53.837747
+7,user/codecarbonops,feature-70,93,build,15,226,157,0.019415,7.0072,server-us-east-1,30.0,ALLOW,2026-04-09 11:28:53.837747
+31,my-org/frontend-repo,main,,build_and_test,5,80,40,0.0131,0.29,AWS Canada,50.0,ALLOW,2026-04-09 13:53:57.211567
+32,my-org/frontend-repo,main,,build_and_test,50,1600,500,0.045500000000000006,1.0,AWS Canada,50.0,ALLOW,2026-04-09 13:53:57.591477
+33,my-org/frontend-repo,main,,build_and_test,200,9000,1000,0.16,4.48,AWS Stockholm,50.0,ALLOW,2026-04-09 13:53:57.941698
+39,my-org/core,main,,build_and_test,200,9000,0,0.155,2.48,AWS Canada,50.0,BLOCK,2026-04-09 14:08:19.788187

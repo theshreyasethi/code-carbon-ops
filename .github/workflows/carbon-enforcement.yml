@@ -1,0 +1,101 @@
+name: Carbon Budget Enforcement
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  carbon-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Get code metrics
+        id: metrics
+        run: |
+          FILES_CHANGED=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | wc -l)
+          LINES_ADDED=$(git diff --numstat origin/${{ github.base_ref }}...HEAD | awk '{sum+=$1} END {print sum+0}')
+          LINES_REMOVED=$(git diff --numstat origin/${{ github.base_ref }}...HEAD | awk '{sum+=$2} END {print sum+0}')
+          echo "files_changed=$FILES_CHANGED" >> $GITHUB_OUTPUT
+          echo "lines_added=$LINES_ADDED" >> $GITHUB_OUTPUT
+          echo "lines_removed=$LINES_REMOVED" >> $GITHUB_OUTPUT
+      
+      - name: Call PCEM API
+        id: pcem
+        run: |
+          # Configure PCEM API URL (set as GitHub secret or use default)
+          PCEM_API_URL="${{ secrets.PCEM_API_URL || 'http://localhost:8000' }}"
+          
+          RESPONSE=$(curl -s -X POST "$PCEM_API_URL/api/v1/ci/predict" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "repo": "${{ github.repository }}",
+              "pr_number": ${{ github.event.pull_request.number }},
+              "branch": "${{ github.head_ref }}",
+              "job_type": "build_and_test",
+              "runner_type": "ubuntu-latest",
+              "region": "us-east-1",
+              "code_metrics": {
+                "files_changed": ${{ steps.metrics.outputs.files_changed }},
+                "lines_added": ${{ steps.metrics.outputs.lines_added }},
+                "lines_removed": ${{ steps.metrics.outputs.lines_removed }}
+              }
+            }' || echo '{"error": "API unavailable", "enforcement_action": "ALLOW"}')
+          
+          echo "response<<EOF" >> $GITHUB_OUTPUT
+          echo "$RESPONSE" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          DECISION=$(echo "$RESPONSE" | jq -r '.enforcement_action // "ALLOW"')
+          echo "decision=$DECISION" >> $GITHUB_OUTPUT
+      
+      - name: Post PR Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const response = JSON.parse(`${{ steps.pcem.outputs.response }}`);
+            
+            let comment = `## 🌱 Carbon Budget Check\n\n`;
+            
+            if (response.error) {
+              comment += `⚠️ PCEM API unavailable - proceeding with pipeline.\n`;
+            } else {
+              const pred = response.prediction || {};
+              const budget = response.budget || {};
+              
+              comment += `**Predicted Impact:**\n`;
+              comment += `- ⚡ Energy: ${pred.energy_kwh || 'N/A'} kWh\n`;
+              comment += `- 🏭 Carbon: ${pred.carbon_g || 'N/A'}g CO2\n`;
+              comment += `- 💧 Water: ${pred.water_liters || 'N/A'}L\n\n`;
+              
+              comment += `**Budget Limits:**\n`;
+              comment += `- 🏭 Carbon: ${budget.carbon_limit_g || 'N/A'}g CO2\n`;
+              comment += `- 💧 Water: ${budget.water_limit_l || 'N/A'}L\n\n`;
+              
+              const action = response.enforcement_action || 'ALLOW';
+              const emoji = action === 'BLOCK' ? '❌' : (action === 'THROTTLE' ? '⚠️' : '✅');
+              comment += `**Decision:** ${emoji} ${action}\n`;
+              
+              if (response.mitigation_options && response.mitigation_options.length > 0) {
+                comment += `\n**Mitigation Options:**\n`;
+                response.mitigation_options.forEach(m => {
+                  comment += `- ${m.type}: ${m.description}\n`;
+                });
+              }
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+      
+      - name: Enforce Decision
+        if: steps.pcem.outputs.decision == 'BLOCK'
+        run: |
+          echo "::error::Pipeline blocked due to carbon budget violation"
+          exit 1
